@@ -29,11 +29,11 @@ void getLetter(char let, int letter[5][5]){
     }
     else if(inp == 'C'){
         int C[5][5] = {
-            { 0, 1, 1, 1 },
+            { 1, 1, 1, 1 },
             { 1, 0, 0, 0 },
             { 1, 0, 0, 0 },
             { 1, 0, 0, 0 },
-            { 0, 1, 1, 1 }
+            { 1, 1, 1, 1 }
         };  
         memcpy(letter,C,sizeof(C));
     }
