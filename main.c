@@ -285,6 +285,7 @@ int main()
     printf("%s\n","Enter first emoticon with colons. This will be used for the Blank Space.");
     scanf("%s",emote2);
     printf("\n");
+    
     int max; 
     int length = (4*strlen(word)) + strlen(word)-1;
     int letter[5][5];
