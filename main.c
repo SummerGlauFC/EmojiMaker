@@ -358,6 +358,7 @@ int main(int argc, char *argv[])
     GtkWidget *emoji1;
     GtkWidget *emoji2;
     GtkWidget *grid;
+    GtkWidget *header;
     GtkClipboard *clipb;
     
     widgets data;
@@ -369,6 +370,7 @@ int main(int argc, char *argv[])
     
     window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
     
+    header = gtk_label_new("SGFC EmojiMaker");
     inputw = gtk_entry_new ();
     emoji1 = gtk_entry_new ();
     emoji2 = gtk_entry_new ();
@@ -379,7 +381,13 @@ int main(int argc, char *argv[])
     data.emoji2 = emoji2;
     data.clipb = clipb;
     
-    
+    const char *format = "<span size=\"larger\"font_weight=\"bold\">\%s</span>";
+    char *markup;
+
+    markup = g_markup_printf_escaped (format, "SGFC EmojiMaker");
+    gtk_label_set_markup (GTK_LABEL (header), markup);
+    g_free (markup);
+
     gtk_entry_set_placeholder_text(GTK_ENTRY(inputw), "Word to Convert");
     gtk_entry_set_placeholder_text(GTK_ENTRY(emoji1), "Emote for Text");
     gtk_entry_set_placeholder_text(GTK_ENTRY(emoji2), "Emote for Blank");
@@ -391,14 +399,15 @@ int main(int argc, char *argv[])
     g_signal_connect(button,"clicked",G_CALLBACK(getEmoteText),&data);
     
     
-    gtk_container_set_border_width(GTK_CONTAINER(window), 40);
+    gtk_container_set_border_width(GTK_CONTAINER(window), 10);
     gtk_container_add(GTK_CONTAINER(window), grid);
     
     
-    gtk_grid_attach (GTK_GRID (grid), inputw, 0, 0, 2, 1);
-    gtk_grid_attach (GTK_GRID (grid), emoji1, 0, 1, 1, 1);
-    gtk_grid_attach (GTK_GRID (grid), emoji2, 1, 1, 1, 1);
-    gtk_grid_attach (GTK_GRID (grid), button, 0, 2, 2, 1);
+    gtk_grid_attach (GTK_GRID (grid), header, 0, 0, 2, 1);
+    gtk_grid_attach (GTK_GRID (grid), inputw, 0, 1, 2, 1);
+    gtk_grid_attach (GTK_GRID (grid), emoji1, 0, 2, 1, 1);
+    gtk_grid_attach (GTK_GRID (grid), emoji2, 1, 2, 1, 1);
+    gtk_grid_attach (GTK_GRID (grid), button, 0, 3, 2, 1);
 
 
     
