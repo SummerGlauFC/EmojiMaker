@@ -112,8 +112,8 @@ void getLetter(char let, int letter[5][5]){
         int K[5][5] = {
             { 1, 0, 0, 1 },
             { 1, 0, 1, 0 },
-            { 1, 1, 0, 1 },
-            { 1, 0, 1, 1 },
+            { 1, 1, 0, 0 },
+            { 1, 0, 1, 0 },
             { 1, 0, 0, 1 }
         };  
         memcpy(letter,K,sizeof(K));
