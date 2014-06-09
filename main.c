@@ -173,8 +173,8 @@ void getLetter(char let, int letter[5][5]){
             { 1, 1, 1, 1 },
             { 1, 0, 0, 1 },
             { 1, 0, 0, 1 },
-            { 1, 0, 1, 1 },
-            { 1, 1, 1, 1 }
+            { 1, 0, 1, 0 },
+            { 1, 1, 0, 1 }
         };  
         memcpy(letter,Q,sizeof(Q));
     }
@@ -308,6 +308,7 @@ static void getEmoteText (GtkWidget *widget,
     
     int max;
     char string[5000];
+    memset(string, 0, sizeof(string));
     int strcount = 0;
     int em1len = strlen(emote1);
     int em2len = strlen(emote2);
