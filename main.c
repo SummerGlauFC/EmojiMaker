@@ -112,8 +112,8 @@ void getLetter(char let, int letter[5][5]){
         int K[5][5] = {
             { 1, 0, 0, 1 },
             { 1, 0, 1, 0 },
-            { 1, 1, 0, 1 },
-            { 1, 0, 1, 1 },
+            { 1, 1, 0, 0 },
+            { 1, 0, 1, 0 },
             { 1, 0, 0, 1 }
         };  
         memcpy(letter,K,sizeof(K));
@@ -305,8 +305,12 @@ static void getEmoteText (GtkWidget *widget,
     const char* word = gtk_entry_get_text(GTK_ENTRY(mydata->inputw));
     const char* emote1 = gtk_entry_get_text(GTK_ENTRY(mydata->emoji1));
     const char* emote2 = gtk_entry_get_text(GTK_ENTRY(mydata->emoji2)); 
-    gtk_clipboard_set_text(mydata->clipb,word,-1);
-    int max; 
+    
+    int max;
+    char string[5000];
+    int strcount = 0;
+    int em1len = strlen(emote1);
+    int em2len = strlen(emote2);
     int letter[5][5];
     memset(letter, 0, sizeof(letter[0][0]) * 5 * 5);
     for(row = 0; row < 5; row++){
@@ -317,18 +321,28 @@ static void getEmoteText (GtkWidget *widget,
             getLetter(word[i],letter);
             for(col = 0; col < max; col++){
                 if(letter[row][col] == 1){
+                    memmove(string+strcount,emote1,em1len);
+                    strcount += em1len;
                     printf("%s",emote1);
                 }
                 else if(letter[row][col] == 0){
                     printf("%s",emote2);
+                    memmove(string+strcount,emote2,em2len);
+                    strcount += em2len;
                 }
             }
-            if(i < strlen(word)-1)
-            printf("%s",emote2);
+            if(i < strlen(word)-1){
+                printf("%s",emote2);
+                memmove(string+strcount,emote2,em2len);
+                strcount += em2len;
+            }
         }
         printf("\n");
+        memmove(string+strcount,"\n",1);
+        strcount += 1;
     }
-printf("\n");
+    gtk_clipboard_set_text(mydata->clipb,string,-1);
+    printf("\n");
 
 }
 
