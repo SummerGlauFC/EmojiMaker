@@ -325,27 +325,21 @@ static void getEmoteText (GtkWidget *widget,
                 if(letter[row][col] == 1){
                     memmove(string+strcount,emote1,em1len);
                     strcount += em1len;
-                    printf("%s",emote1);
                 }
                 else if(letter[row][col] == 0){
-                    printf("%s",emote2);
                     memmove(string+strcount,emote2,em2len);
                     strcount += em2len;
                 }
             }
             if(i < strlen(word)-1){
-                printf("%s",emote2);
                 memmove(string+strcount,emote2,em2len);
                 strcount += em2len;
             }
         }
-        printf("\n");
         memmove(string+strcount,"\n",1);
         strcount += 1;
     }
     gtk_clipboard_set_text(mydata->clipb,string,-1);
-    printf("\n");
-
 }
 
 
