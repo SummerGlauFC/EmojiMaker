@@ -309,7 +309,8 @@ static void getEmoteText (GtkWidget *widget,
     int max;
     char string[5000];
     memset(string, 0, sizeof(string));
-    int strcount = 0;
+    memmove(string,".\n",2);
+    int strcount = 2;
     int em1len = strlen(emote1);
     int em2len = strlen(emote2);
     int letter[5][5];
