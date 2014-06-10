@@ -288,6 +288,16 @@ void getLetter(char let, int letter[5][5]){
         };  
         memcpy(letter,One,sizeof(One));
     }
+    else if(inp == ' '){
+        int space[5][5] = {
+            { 0, 0 },
+            { 0, 0 },
+            { 0, 0 },
+            { 0, 0 },
+            { 0, 0 }
+        };  
+        memcpy(letter,space,sizeof(space));
+    }
 }
 
 typedef struct {
@@ -320,6 +330,8 @@ static void getEmoteText (GtkWidget *widget,
             max = 4;
             if(toupper(word[i]) == 'W' || toupper(word[i]) == 'M')
             max = 5;
+            if(toupper(word[i]) == ' ' || toupper(word[i]) == ' ')
+            max = 2;
             getLetter(word[i],letter);
             for(col = 0; col < max; col++){
                 if(letter[row][col] == 1){
