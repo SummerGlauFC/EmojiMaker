@@ -288,6 +288,26 @@ void getLetter(char let, int letter[5][5]){
         };  
         memcpy(letter,One,sizeof(One));
     }
+    else if(inp == '2'){
+        int Two[5][5] = {
+            { 1, 1, 1, 1 },
+            { 0, 0, 0, 1 },
+            { 0, 0, 1, 0 },
+            { 0, 1, 0, 0 },
+            { 1, 1, 1, 1 }
+        };  
+        memcpy(letter,Two,sizeof(Two));
+    }
+    else if(inp == '3'){
+        int Thr[5][5] = {
+            { 1, 1, 1, 1 },
+            { 0, 0, 0, 1 },
+            { 1, 1, 1, 1 },
+            { 0, 0, 0, 1 },
+            { 1, 1, 1, 1 }
+        };  
+        memcpy(letter,Thr,sizeof(Thr));
+    }
     else if(inp == ' '){
         int space[5][5] = {
             { 0, 0 },
